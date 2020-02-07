@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.PedidosActivity">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/caja1">
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center|start"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Código"/>
+        <EditText
+            android:id="@+id/txt_codigo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/caja1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/caja2">
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center|start"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Código"/>
+        <EditText
+            android:id="@+id/txt_detalle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/caja2"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/caja3">
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center|start"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Código"/>
+        <EditText
+            android:id="@+id/txt_total"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/caja3"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/caja4">
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center|start"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Código"/>
+        <EditText
+            android:id="@+id/txt_tipo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Guardar"
+        android:layout_below="@+id/caja4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/btn_guardar"/>
+
+</RelativeLayout>
