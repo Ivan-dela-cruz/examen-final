@@ -3,6 +3,7 @@ package co.desofsi.app_examen_delacruz.entidades;
 import java.io.Serializable;
 
 public class Pedidos implements Serializable {
+    private int id;
     private String codigo;
     private String detalle;
     private double total;
@@ -13,6 +14,22 @@ public class Pedidos implements Serializable {
         this.detalle = detalle;
         this.total = total;
         this.tipo = tipo;
+    }
+
+    public Pedidos(int id, String codigo, String detalle, double total, int tipo) {
+        this.id = id;
+        this.codigo = codigo;
+        this.detalle = detalle;
+        this.total = total;
+        this.tipo = tipo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCodigo() {

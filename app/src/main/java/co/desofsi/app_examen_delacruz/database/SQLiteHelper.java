@@ -30,17 +30,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void insertDataPedidos(String codigo, String detalle,  double total, int tipo) {
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO gastos VALUES(?,?,?,?)";
+        String sql = "INSERT INTO pedidos VALUES(?,?,?,?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
-        statement.bindString(0, codigo);
-        statement.bindString(1, detalle);
-        statement.bindDouble(2, total);
-        statement.bindDouble(3,tipo);
+        statement.bindString(1, codigo);
+        statement.bindString(2, detalle);
+        statement.bindDouble(3, total);
+        statement.bindDouble(4,tipo);
         statement.executeInsert();
 
     }
-
 
 
     public void deletedDataTable(String sql) {

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class PedidosActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class PedidosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedidos);
         init();
+        eventoBotones();
 
     }
 
@@ -36,7 +38,17 @@ public class PedidosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                MainActivity.sqLiteHelper.insertDataPedidos();
+
+                    double total_pedido = Double.parseDouble(total.getText().toString());
+
+                    int tipo_p = Integer.parseInt(tipo.getText().toString());
+
+                    MainActivity.sqLiteHelper.insertDataPedidos(codigo.getText().toString(),detalle.getText().toString(),total_pedido,tipo_p);
+                    Toast.makeText(PedidosActivity.this,"Agregado exitosamente",Toast.LENGTH_SHORT).show();
+
+
+
+
             }
         });
     }

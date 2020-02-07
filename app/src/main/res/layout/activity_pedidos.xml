@@ -38,12 +38,12 @@
             android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Código"/>
+            android:text="Detalle"/>
         <EditText
             android:id="@+id/txt_detalle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="number"/>
+            android:inputType="text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +58,7 @@
             android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Código"/>
+            android:text="Total"/>
         <EditText
             android:id="@+id/txt_total"
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Código"/>
+            android:text="Tipo"/>
         <EditText
             android:id="@+id/txt_tipo"
             android:layout_width="match_parent"
