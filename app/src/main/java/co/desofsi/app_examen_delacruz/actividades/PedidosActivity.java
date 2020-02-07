@@ -38,6 +38,7 @@ public class PedidosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                try{
 
                     double total_pedido = Double.parseDouble(total.getText().toString());
 
@@ -45,6 +46,10 @@ public class PedidosActivity extends AppCompatActivity {
 
                     MainActivity.sqLiteHelper.insertDataPedidos(codigo.getText().toString(),detalle.getText().toString(),total_pedido,tipo_p);
                     Toast.makeText(PedidosActivity.this,"Agregado exitosamente",Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(PedidosActivity.this,"Error en los datos",Toast.LENGTH_SHORT).show();
+                }
+
 
 
 

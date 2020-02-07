@@ -54,7 +54,7 @@ public class AdapterPedidos extends BaseAdapter {
         TextView txt_valor = (TextView) view.findViewById(R.id.txt_valor_gasto_home);
         TextView txt_fecha = (TextView) view.findViewById(R.id.txt_fecha_item);
 
-        txt_describe.setText(gastosUser.getDetalle());
+        txt_describe.setText(gastosUser.getDetalle()+"  Tipo"+ gastosUser.getTipo());
         txt_valor.setText(String.valueOf(gastosUser.getCodigo()));
         txt_fecha.setText(String.valueOf(gastosUser.getTotal()));
 
