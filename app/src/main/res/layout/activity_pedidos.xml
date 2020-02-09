@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,91 +7,118 @@
     tools:context=".actividades.PedidosActivity">
 
     <LinearLayout
-        android:gravity="center"
+        android:id="@+id/caja1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/caja1">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
-            android:textStyle="bold"
-            android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Código"/>
+            android:gravity="center|start"
+            android:text="Código pe"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/txt_codigo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="number"/>
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/caja1"
-        android:gravity="center"
+        android:id="@+id/caja2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/caja2">
+        android:layout_below="@+id/caja1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
-            android:textStyle="bold"
-            android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Detalle"/>
+            android:gravity="center|start"
+            android:text="Detalle pe"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/txt_detalle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="text"/>
+            android:inputType="text" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/caja2"
-        android:gravity="center"
+        android:id="@+id/caja3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/caja3">
+        android:layout_below="@+id/caja2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
-            android:textStyle="bold"
-            android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Total"/>
+            android:gravity="center|start"
+            android:text="Total pe"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/txt_total"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="number"/>
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/caja3"
-        android:gravity="center"
+        android:id="@+id/caja4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/caja4">
+        android:layout_below="@+id/caja3"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
-            android:textStyle="bold"
-            android:gravity="center|start"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Tipo"/>
+            android:gravity="center|start"
+            android:text="Tipo pe"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/txt_tipo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="number"/>
+            android:inputType="number" />
     </LinearLayout>
 
     <Button
+
+        android:id="@+id/btn_guardar"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/btn_actualizars"
+        android:background="@color/colorPrimary"
+        android:text="Guardar" />
+
+    <Button
+
+        android:id="@+id/btn_actualizars"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Guardar"
-        android:layout_below="@+id/caja4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/btn_guardar"/>
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimary"
+        android:text="Actualizar" />
 
 </RelativeLayout>

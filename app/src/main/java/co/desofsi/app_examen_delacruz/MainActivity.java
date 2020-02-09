@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLClientInfoException;
@@ -24,18 +25,20 @@ public class MainActivity extends AppCompatActivity {
     public static SQLiteHelper sqLiteHelper;
     private ListView listView;
     private ArrayList<Pedidos> lista_pe;
+    private TextView total_fnal ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sqLiteHelper = new SQLiteHelper(this, "bddelacruz.sqlite", null, 1);
+        sqLiteHelper = new SQLiteHelper(this, "bdlema.sqlite", null, 1);
         sqLiteHelper.getWritableDatabase();
         sqLiteHelper.close();
 
         Button button = (Button) findViewById(R.id.menu_ingreso);
         listView = (ListView) findViewById(R.id.lista);
+        total_fnal = (TextView)findViewById(R.id.txt_suma);
         lista_pe = new ArrayList<>();
 
         llenar();
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 double total = lista_pe.get(position).getTotal();
 
                 if (total < 1000) {
@@ -71,24 +75,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void llenar() {
         lista_pe.clear();
         Cursor cursor = sqLiteHelper.getDataTable("SELECT * FROM pedidos");
+        double total_pe = 0;
+        int cont=0;
 
         while (cursor.moveToNext()) {
+            cont++;
             int id = Integer.parseInt(cursor.getString(0));
             String codigo = cursor.getString(0);
             String detalle = cursor.getString(1);
+
             double total = cursor.getDouble(2);
+
+
             int tipo = cursor.getInt(3);
 
+
+            total_pe+=total;
+
+
             lista_pe.add(new Pedidos(id, codigo, detalle, total, tipo));
+
         }
 
+        int ultimo = lista_pe.size()-1;
+
+        Toast.makeText(MainActivity.this,""+lista_pe.get(ultimo).getCodigo()+" "+lista_pe.get(ultimo).getDetalle()+"  "+lista_pe.get(ultimo).getTipo()+" "+lista_pe.get(ultimo).getTotal(),Toast.LENGTH_SHORT).show();
         AdapterPedidos adapterPedidos = new AdapterPedidos(MainActivity.this, lista_pe);
         listView.setAdapter(adapterPedidos);
+        total_fnal.setText("Toal: "+total_pe+"      Numero pedidos : "+cont);
     }
 }

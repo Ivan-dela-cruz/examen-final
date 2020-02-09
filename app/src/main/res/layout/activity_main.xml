@@ -6,8 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <TextView
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Total"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/txt_suma"/>
 
     <ListView
+        android:layout_below="@+id/txt_suma"
         android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,6 +23,7 @@
         android:layout_marginBottom="0dp" />
 
     <Button
+        android:background="@color/colorPrimary"
         android:id="@+id/menu_ingreso"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -24,6 +33,6 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
-        android:text="Registar" />
+        android:text="IR AL CRUD" />
 
 </RelativeLayout>

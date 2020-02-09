@@ -24,7 +24,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return database.rawQuery(sql, null);
     }
 
-
     ///INGRESO DE pedidos
 
     public void insertDataPedidos(String codigo, String detalle,  double total, int tipo) {
