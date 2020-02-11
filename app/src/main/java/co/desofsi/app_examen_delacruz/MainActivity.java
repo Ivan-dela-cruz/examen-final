@@ -1,6 +1,7 @@
 package co.desofsi.app_examen_delacruz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import co.desofsi.app_examen_delacruz.actividades.EditarPedidoActivity;
 import co.desofsi.app_examen_delacruz.actividades.PedidosActivity;
 import co.desofsi.app_examen_delacruz.adaptadores.AdapterPedidos;
 import co.desofsi.app_examen_delacruz.database.SQLiteHelper;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public static SQLiteHelper sqLiteHelper;
     private ListView listView;
     private ArrayList<Pedidos> lista_pe;
-    private TextView total_fnal ;
+    private TextView total_fnal,txt_ultimo;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,33 +38,30 @@ public class MainActivity extends AppCompatActivity {
         sqLiteHelper.getWritableDatabase();
         sqLiteHelper.close();
 
-        Button button = (Button) findViewById(R.id.menu_ingreso);
-        listView = (ListView) findViewById(R.id.lista);
-        total_fnal = (TextView)findViewById(R.id.txt_suma);
-        lista_pe = new ArrayList<>();
-
+        init();
         llenar();
+        eventos();
 
 
+    }
+
+    private void init() {
+        button = (Button) findViewById(R.id.menu_ingreso);
+        listView = (ListView) findViewById(R.id.lista);
+        total_fnal = (TextView) findViewById(R.id.txt_suma);
+        txt_ultimo = (TextView) findViewById(R.id.txt_ultimo);
+        lista_pe = new ArrayList<>();
+    }
+
+    public void eventos() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                double total = lista_pe.get(position).getTotal();
-
-                if (total < 1000) {
-
-
-                    String sql = "DELETE FROM pedidos WHERE ped_codigo = '" + lista_pe.get(position).getCodigo() + "'";
-                    sqLiteHelper.deletedDataTable(sql);
-
-                    listView.clearAnimation();
-                    llenar();
-
-
-                } else {
-                    Toast.makeText(MainActivity.this, "El pedido tiene un valor mayor a 1000", Toast.LENGTH_SHORT).show();
-                }
+                Pedidos pedidos  = lista_pe.get(position);
+                        Intent intent = new Intent(MainActivity.this, EditarPedidoActivity.class);
+               intent.putExtra("pedido",pedidos);
+               startActivity(intent);
             }
         });
 
@@ -74,14 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public void llenar() {
         lista_pe.clear();
         Cursor cursor = sqLiteHelper.getDataTable("SELECT * FROM pedidos");
         double total_pe = 0;
-        int cont=0;
+        int cont = 0;
 
         while (cursor.moveToNext()) {
             cont++;
@@ -95,18 +93,26 @@ public class MainActivity extends AppCompatActivity {
             int tipo = cursor.getInt(3);
 
 
-            total_pe+=total;
+            total_pe += total;
 
 
             lista_pe.add(new Pedidos(id, codigo, detalle, total, tipo));
 
         }
 
-        int ultimo = lista_pe.size()-1;
 
-        Toast.makeText(MainActivity.this,""+lista_pe.get(ultimo).getCodigo()+" "+lista_pe.get(ultimo).getDetalle()+"  "+lista_pe.get(ultimo).getTipo()+" "+lista_pe.get(ultimo).getTotal(),Toast.LENGTH_SHORT).show();
-        AdapterPedidos adapterPedidos = new AdapterPedidos(MainActivity.this, lista_pe);
-        listView.setAdapter(adapterPedidos);
-        total_fnal.setText("Toal: "+total_pe+"      Numero pedidos : "+cont);
+        int ultimo = lista_pe.size() - 1;
+
+        if (ultimo != -1) {
+           // Toast.makeText(MainActivity.this, "" + lista_pe.get(ultimo).getCodigo() + " " + lista_pe.get(ultimo).getDetalle() + "  " + lista_pe.get(ultimo).getTipo() + " " + lista_pe.get(ultimo).getTotal(), Toast.LENGTH_SHORT).show();
+            AdapterPedidos adapterPedidos = new AdapterPedidos(MainActivity.this, lista_pe);
+            listView.setAdapter(adapterPedidos);
+            total_fnal.setText("TOTAL: " + total_pe + "      TOTAL PEDIDOS : " + cont);
+            txt_ultimo.setText("ULTIMO PEDIDO => Cod:" + lista_pe.get(ultimo).getCodigo() + "   detalle:" + lista_pe.get(ultimo).getDetalle() + "   Tipo:" + lista_pe.get(ultimo).getTipo() + "   Total:" + lista_pe.get(ultimo).getTotal());
+        } else {
+
+        }
+
+
     }
 }

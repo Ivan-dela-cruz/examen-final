@@ -7,15 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <TextView
-        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:gravity="center|start"
         android:textStyle="bold"
-        android:text="Total"
+        android:text="Total : "
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:id="@+id/txt_suma"/>
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/txt_suma"
+        android:gravity="center|start"
+        android:text="Ultimo: "
+        android:textSize="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_ultimo"/>
 
     <ListView
-        android:layout_below="@+id/txt_suma"
+        android:layout_below="@+id/txt_ultimo"
         android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

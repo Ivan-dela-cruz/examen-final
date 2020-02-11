@@ -47,7 +47,7 @@ public class PedidosActivity extends AppCompatActivity {
                     Toast.makeText(PedidosActivity.this,"Agregado exitosamente",Toast.LENGTH_SHORT).show();
                     limpiar();
                 }catch (Exception e){
-                    Toast.makeText(PedidosActivity.this,"Error en los datos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PedidosActivity.this,"Error en los datos o ya existe codigo",Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -60,22 +60,7 @@ public class PedidosActivity extends AppCompatActivity {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cod = codigo.getText().toString();
-                String det = detalle.getText().toString();
-                double total_pedido = Double.parseDouble(total.getText().toString());
-
-                int tipo_p = Integer.parseInt(tipo.getText().toString());
-
-                if(tipo_p!=7){
-
-                    MainActivity.sqLiteHelper.updateDataPedido(cod,det,total_pedido,tipo_p);
-                    Toast.makeText(PedidosActivity.this,"Actualizado correctamente",Toast.LENGTH_SHORT).show();
-                    limpiar();
-
-                }else{
-                    Toast.makeText(PedidosActivity.this,"No se puede actualizar es igual a 7",Toast.LENGTH_SHORT).show();
-                }
-
+               limpiar();
 
             }
         });

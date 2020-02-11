@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.PedidosActivity">
+    tools:context=".actividades.EditarPedidoActivity">
 
     <LinearLayout
         android:id="@+id/caja1"
@@ -21,6 +22,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:focusable="false"
             android:id="@+id/txt_codigo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -95,8 +97,7 @@
 
     <Button
         android:layout_marginTop="20dp"
-        android:id="@+id/btn_guardar"
-
+        android:id="@+id/btn_elimina"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_below="@+id/caja4"
@@ -105,21 +106,20 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_toEndOf="@+id/btn_actualizars"
+        android:layout_toEndOf="@+id/btn_actualiza"
         android:background="@color/colorPrimary"
-        android:text="Guardar" />
+        android:text="Eliminar" />
 
     <Button
         android:layout_marginTop="20dp"
-        android:id="@+id/btn_actualizars"
+        android:id="@+id/btn_actualiza"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/caja4"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorPrimary"
-        android:text="Limpiar" />
-
+        android:text="Actualizar" />
 
 
 </RelativeLayout>
